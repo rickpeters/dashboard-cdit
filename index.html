@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>
+			Highcharts Example
+		</title>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
+</script>
+		<script type="text/javascript">
+$(function () {
+
+		// Parse the data from an inline table using the Highcharts Data plugin
+		$('#container').highcharts({
+		data: {
+			table: 'freq',
+			startRow: 1,
+			endRow: 7,
+			endColumn: 1
+		},
+
+		chart: {
+			polar: true,
+			type: 'column'
+		},
+
+		title: {
+			text: 'Continuous Delivery Maturity Scan voor Klic'
+		},
+
+		subtitle: {
+			text: 'Bron: project CDIT'
+		},
+
+		pane: {
+			size: '85%'
+		},
+
+		legend: {
+			reversed: true,
+			align: 'right',
+			verticalAlign: 'top',
+			y: 100,
+			layout: 'vertical'
+		},
+
+		xAxis: {
+			tickmarkPlacement: 'on'
+		},
+			
+		yAxis: {
+			min: 0,
+			endOnTick: false,
+			showLastLabel: true,
+			title: {
+				text: 'score (%)'
+			},
+			labels: {
+				formatter: function () {
+					return this.value + '%';
+				}
+			}
+		},
+
+		tooltip: {
+			valueSuffix: '%',
+			followPointer: true
+		},
+			
+		plotOptions: {
+			series: {
+				stacking: 'normal',
+				shadow: false,
+				groupPadding: 0,
+				pointPlacement: 'on'
+			}
+		}
+		});
+		});
+		</script>
+	</head>
+	<body>
+		<script src="js/highcharts.js" type="text/javascript">
+</script><script src="js/highcharts-more.js" type="text/javascript">
+</script><script src="js/modules/data.js" type="text/javascript">
+</script><script src="js/modules/exporting.js" type="text/javascript">
+</script>
+		<div id="container" style="min-width: 420px; max-width: 600px; height: 400px; margin: 0 auto"></div>
+		<div style="display:none">
+			<table id="freq" border="0" cellspacing="0" cellpadding="0">
+				<tr nowrap bgcolor="#CCCCFF">
+					<th colspan="9" class="hdr">
+						meetmoment
+					</th>
+				</tr>
+				<tr nowrap bgcolor="#CCCCFF">
+					<th class="freq">
+						moment
+					</th>
+					<th class="freq">
+						intake
+					</th>
+					<th class="freq">
+						sprint 1
+					</th>
+				</tr>
+				<tr nowrap>
+					<td class="dir">
+						Test
+					</td>
+					<td class="data">
+						70
+					</td>
+				</tr>
+				<tr nowrap bgcolor="#DDDDDD">
+					<td class="dir">
+						Integration
+					</td>
+					<td class="data">
+						20
+					</td>
+				</tr>
+				<tr nowrap>
+					<td class="dir">
+						Build
+					</td>
+					<td class="data">
+						90
+					</td>
+				</tr>
+				<tr nowrap bgcolor="#DDDDDD">
+					<td class="dir">
+						Delivery
+					</td>
+					<td class="data">
+						95
+					</td>
+				</tr>
+				<tr nowrap>
+					<td class="dir">
+						Scrum
+					</td>
+					<td class="data">
+						40
+					</td>
+				</tr>
+				<tr nowrap bgcolor="#DDDDDD">
+					<td class="dir">
+						Agile
+					</td>
+					<td class="data">
+						60
+					</td>
+				</tr>
+				<tr nowrap>
+					<td class="dir">
+						Provisioning
+					</td>
+					<td class="data">
+						80
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>
