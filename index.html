@@ -10,26 +10,105 @@
 		<script type="text/javascript">
 $(function () {
 
-		// Parse the data from an inline table using the Highcharts Data plugin
-		$('#container').highcharts({
-		data: {
-			table: 'freq',
-			startRow: 1,
-			endRow: 7,
-			endColumn: 2
-		},
+		$('#projecten').highcharts({
+	    series: [{
+	        type: 'column',
+	        name: 'bgt',
+			color: '#DDFFCC',
+			data: [ 80, 50, 40, 32, 90, 60, 95 ]
+			},
+			{
+	        type: 'column',
+	        name: 'klic',
+			color: '#00FF00',
+			data: [ 40, 60, 58, 44, 93, 20, 80]
+			},
+			{
+	        type: 'column',
+	        name: 'lvwoz',
+			color: '#2200FF',
+			data: [ 30, 20, 38, 44, 43, 20, 80]
+	    }],
 
 		chart: {
 			polar: true,
 			type: 'column'
 		},
 
+	    credits: {
+	        enabled: false
+	    },
 		title: {
-			text: 'Continuous Delivery Maturity Scan voor Klic'
+			text: 'Continuous Delivery maturity scan projecten'
 		},
 
-		subtitle: {
-			text: 'Bron: project CDIT'
+		pane: {
+			size: '85%'
+		},
+
+		legend: {
+			reversed: false,
+			enabled: true, 
+			align: 'right',
+			verticalAlign: 'top',
+			y: 100,
+			layout: 'vertical'
+		},
+
+		xAxis: {
+			tickmarkPlacement: 'between',
+			categories: ['deployment', 'provisioning', 'agile', 'scrum', 'integration', 'build', 'test']
+		},
+		
+		yAxis: {
+			min: 0,
+			max: 100,
+			endOnTick: false,
+			showLastLabel: false,
+			title: {
+				text: 'score (%)'
+			},
+			labels: {
+				formatter: function () {
+					return this.value + '%';
+				}
+			}
+		},
+
+		tooltip: {
+			valueSuffix: '%',
+			followPointer: true
+		},
+		
+		plotOptions: {
+			series: {
+				stacking: null,
+				shadow: false,
+				groupPadding: 0,
+				pointPlacement: 'on'
+			}
+		}
+		});
+
+
+		$('#klic').highcharts({
+        series: [{
+            type: 'column',
+            name: 'klic',
+			color: '#00FF00',
+			data: [ 40, 60, 58, 44, 93, 20, 80]
+        }],
+
+		chart: {
+			polar: true,
+			type: 'column'
+		},
+
+        credits: {
+            enabled: false
+        },
+		title: {
+			text: 'KLIC'
 		},
 
 		pane: {
@@ -38,6 +117,7 @@ $(function () {
 
 		legend: {
 			reversed: true,
+			enabled: false, 
 			align: 'right',
 			verticalAlign: 'top',
 			y: 100,
@@ -45,13 +125,15 @@ $(function () {
 		},
 
 		xAxis: {
-			tickmarkPlacement: 'on'
+			tickmarkPlacement: 'between',
+			categories: ['deployment', 'provisioning', 'agile', 'scrum', 'integration', 'build', 'test']
 		},
 			
 		yAxis: {
 			min: 0,
+			max: 100,
 			endOnTick: false,
-			showLastLabel: true,
+			showLastLabel: false,
 			title: {
 				text: 'score (%)'
 			},
@@ -76,6 +158,146 @@ $(function () {
 			}
 		}
 		});
+
+
+
+		$('#bgt').highcharts({
+        series: [{
+            type: 'column',
+            name: 'bgt',
+			color: '#DDFFCC',
+			data: [ 80, 50, 40, 32, 90, 60, 95 ]
+        }],
+
+		chart: {
+			polar: true,
+			type: 'column'
+		},
+
+        credits: {
+            enabled: false
+        },
+		title: {
+			text: 'BGT'
+		},
+
+		pane: {
+			size: '85%'
+		},
+
+		legend: {
+			reversed: true,
+			enabled: false, 
+			align: 'right',
+			verticalAlign: 'top',
+			y: 100,
+			layout: 'vertical'
+		},
+
+		xAxis: {
+			tickmarkPlacement: 'between',
+			categories: ['deployment', 'provisioning', 'agile', 'scrum', 'integration', 'build', 'test']
+		},
+			
+		yAxis: {
+			min: 0,
+			max: 100,
+			endOnTick: false,
+			showLastLabel: false,
+			title: {
+				text: 'score (%)'
+			},
+			labels: {
+				formatter: function () {
+					return this.value + '%';
+				}
+			}
+		},
+
+		tooltip: {
+			valueSuffix: '%',
+			followPointer: true
+		},
+			
+		plotOptions: {
+			series: {
+				stacking: null,
+				shadow: false,
+				groupPadding: 0,
+				pointPlacement: 'on'
+			}
+		}
+		});
+
+		$('#lvwoz').highcharts({
+        series: [{
+            type: 'column',
+            name: 'lvwoz',
+			color: '#2200FF',
+			data: [ 30, 20, 38, 44, 43, 20, 80]
+        }],
+
+		chart: {
+			polar: true,
+			type: 'column'
+		},
+
+        credits: {
+            enabled: false
+        },
+		title: {
+			text: 'LVWOZ'
+		},
+
+		pane: {
+			size: '85%'
+		},
+
+		legend: {
+			reversed: true,
+			enabled: false, 
+			align: 'right',
+			verticalAlign: 'top',
+			y: 100,
+			layout: 'vertical'
+		},
+
+		xAxis: {
+			tickmarkPlacement: 'between',
+			categories: ['deployment', 'provisioning', 'agile', 'scrum', 'integration', 'build', 'test']
+		},
+			
+		yAxis: {
+			min: 0,
+			max: 100,
+			endOnTick: false,
+			showLastLabel: false,
+			title: {
+				text: 'score (%)'
+			},
+			labels: {
+				formatter: function () {
+					return this.value + '%';
+				}
+			}
+		},
+
+		tooltip: {
+			valueSuffix: '%',
+			followPointer: true
+		},
+			
+		plotOptions: {
+			series: {
+				stacking: null,
+				shadow: false,
+				groupPadding: 0,
+				pointPlacement: 'on'
+			}
+		}
+		});
+
+
 		});
 		</script>
 	</head>
@@ -85,7 +307,15 @@ $(function () {
 </script><script src="js/modules/data.js" type="text/javascript">
 </script><script src="js/modules/exporting.js" type="text/javascript">
 </script>
-		<div id="container" style="min-width: 420px; max-width: 600px; height: 400px; margin: 0 auto"></div>
+		<div id="projecten" style="min-width: 500px; max-width: 800px; height: 400px; margin: 0 auto"></div>
+		<table id="details" width="100%">
+			<tr>
+				<td><div id="klic" style="min-width: 220px; max-width: 400px; height: 350px; margin: 0 auto"></div></td>
+				<td><div id="bgt" style="min-width: 220px; max-width: 400px; height: 350px; margin: 0 auto"></div></td>
+				<td><div id="lvwoz" style="min-width: 220px; max-width: 400px; height: 350px; margin: 0 auto"></div></td>
+			</tr>
+		</table>
+		
 		<div style="display:none">
 			<table id="freq" border="0" cellspacing="0" cellpadding="0">
 				<tr nowrap bgcolor="#CCCCFF">
