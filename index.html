@@ -9,167 +9,23 @@
 		</script>
 		
 		<script type="text/javascript">
-		function polarchart(id, series_data, series_color)
-		{
-			
-			$('#'+id).highcharts({
-		    series: [{
-		        type: 'column',
-		        name: id,
-				color: series_color,
-				data: series_data
-		    }],
-
-			chart: {
-				polar: true,
-				type: 'column'
-			},
-
-		    credits: {
-		        enabled: false
-		    },
-			title: {
-				text: id
-			},
-
-			pane: {
-				size: '85%'
-			},
-
-			legend: {
-				reversed: false,
-				enabled: false, 
-				align: 'right',
-				verticalAlign: 'top',
-				y: 100,
-				layout: 'vertical'
-			},
-
-			xAxis: {
-				tickmarkPlacement: 'between',
-				categories: ['deployment', 'provisioning', 'agile', 'scrum', 'integration', 'build', 'test']
-			},
-		
-			yAxis: {
-				min: 0,
-				max: 100,
-				endOnTick: false,
-				showLastLabel: false,
-				title: {
-					text: 'score (%)'
-				},
-				labels: {
-					formatter: function () {
-						return this.value + '%';
-					}
-				}
-			},
-
-			tooltip: {
-				valueSuffix: '%',
-				followPointer: true
-			},
-		
-			plotOptions: {
-				series: {
-					stacking: null,
-					shadow: false,
-					groupPadding: 0,
-					pointPlacement: 'on'
-				}
-			}
-			});
-			
-			
-			return;
-		}
-		</script>
-		<script type="text/javascript">
 		$(function () {
 
 
-			$('#projecten').highcharts({
-		    series: [{
-		        type: 'column',
-		        name: 'projecten',
-				color: '#110099',
-				data: [ 40, 60, 58, 44, 93, 20, 80]
-		    }],
-
-			chart: {
-				polar: true,
-				type: 'column'
-			},
-
-		    credits: {
-		        enabled: false
-		    },
-			title: {
-				text: "CDIT Maturity Scan Overview"
-			},
-
-			pane: {
-				size: '85%'
-			},
-
-			legend: {
-				reversed: false,
-				enabled: true, 
-				align: 'right',
-				verticalAlign: 'top',
-				y: 100,
-				layout: 'vertical'
-			},
-
-			xAxis: {
-				tickmarkPlacement: 'between',
-				categories: ['deployment', 'provisioning', 'agile', 'scrum', 'integration', 'build', 'test']
-			},
+		projectchart('projecten');
 		
-			yAxis: {
-				min: 0,
-				max: 100,
-				endOnTick: false,
-				showLastLabel: false,
-				title: {
-					text: 'score (%)'
-				},
-				labels: {
-					formatter: function () {
-						return this.value + '%';
-					}
-				}
-			},
-
-			tooltip: {
-				valueSuffix: '%',
-				followPointer: true
-			},
-		
-			plotOptions: {
-				series: {
-					stacking: null,
-					shadow: false,
-					groupPadding: 0,
-					pointPlacement: 'on'
-				}
-			}
-			});
-
-		
-		
-		series_data = [ 40, 60, 58, 44, 93, 20, 80];
+		// ['Build', 'Test', 'Delivery', 'Pipeline', 'XaaS']
+		series_data = [ 100, 74, 35, 20, 60 ];
 		series_color = '#00FF00';
 		polarchart('klic', series_data, series_color);
 
-		series_data = [ 80, 50, 40, 32, 90, 60, 95 ];
-		series_color = '#DDFFCC';
+		series_data = [ 93, 87, 80, 30, 100 ];
+		series_color = '#9944CC';
 		polarchart('bgt', series_data, series_color);
 
-		series_data = [ 30, 20, 38, 44, 43, 20, 80];
+		series_data = [ 75, 33, 0, 0, 50 ];
 		series_color = '#2200FF';
 		polarchart('lvwoz', series_data, series_color);
-
 
 		});
 		</script>
@@ -182,6 +38,8 @@
 		<script src="js/modules/data.js" type="text/javascript">
 		</script>
 		<script src="js/modules/exporting.js" type="text/javascript">
+		</script>
+		<script src="js/cdit.js" type="text/javascript">
 		</script>
 		<div id="projecten" style="min-width: 500px; max-width: 800px; height: 400px; margin: 0 auto"></div>
 		<table id="details" width="100%">
