@@ -12,8 +12,9 @@ function polarchart(id, series_data, series_color) {
 		chart: {
 			polar: true,
 			// type: 'line'
-			type: 'column'
+			type: 'column',
 			// type: 'area'
+			backgroundColor:'transparent'
 		},
 
 		credits: {
@@ -161,7 +162,9 @@ function projectchart(id){
 
 	chart: {
 		polar: true,
-		type: 'column'
+		type: 'column',
+		//backgroundColor:'rgba(255, 255, 255, 0.1)'
+		backgroundColor:'transparent'
 	},
 
     credits: {
