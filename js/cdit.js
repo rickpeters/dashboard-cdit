@@ -87,7 +87,7 @@ function polarchart(parseries) {
 
 function initdata(){
 	
-		$.ajax({ url: 'js/data.csv', 
+		$.ajax({ url: '/js/data.csv', 
 	    		 async: false,
 				 dataType: 'text',
 	         	 success: function(data) {
