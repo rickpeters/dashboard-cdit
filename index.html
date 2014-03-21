@@ -7,6 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="ico/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="ico/favicon.ico" type="image/x-icon">
 
     <title>CDIT Maturity Scan</title>
 
@@ -23,20 +24,12 @@
 	<script type="text/javascript">
 		$(function () {
 
-			projectchart('projecten');
+			initdata();
+			projectchart('projecten', globalseries);
 	
-			// ['Build', 'Test', 'Delivery', 'Pipeline', 'XaaS']
-			series_data = [ 100, 74, 35, 20, 60 ];
-			series_color = '#00FF00';
-			polarchart('klic', series_data, series_color);
-
-			series_data = [ 93, 87, 80, 30, 100 ];
-			series_color = '#9944CC';
-			polarchart('bgt', series_data, series_color);
-
-			series_data = [ 75, 33, 0, 0, 50 ];
-			series_color = '#2200FF';
-			polarchart('lvwoz', series_data, series_color);
+			polarchart(globalseries['klic']);
+			polarchart(globalseries['bgt']);
+			polarchart(globalseries['lvwoz']);
 
 		});
 	</script>
@@ -91,10 +84,21 @@
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
-      <div class="container">
-        <h1>CDIT Maturity Scan</h1>
-        <p>CDIT heeft tot doel de diensten van het Kadaster...</p>
-		<div id="projecten" style="min-width: 500px; max-width: 800px; height: 400px; margin: 0 auto"></div>
+        <h1><img src="ico/continuous-delivery-graphic.png" alt="continuous delivery" height='150px'>CDIT Maturity Scan</h1>
+		<div class="container">
+		<div class="row">
+			<div class="col-md-5">
+			    <p>
+		        CDIT heeft tot doel Continuous Delivery te realiseren voor de diensten van het Kadaster,
+				functionaliteit naar productie brengen op het moment dat het gereed en gewenst is.
+				Om dit mogelijk te maken moeten diensten van idee tot en met productie de uitgangspunten
+				van Continuous Delivery hanteren. CDIT begeleidt individuele diensten bij het bereiken
+				van dit doel en maakt de resultaten inzichtelijk.</p>
+			</div>
+			<div class="col-md-5">
+				<div id="projecten" style="min-width: 500px; max-width: 800px; height: 400px; margin: 0 auto"></div>
+			</div>
+		</div>
         <!--<p><a class="btn btn-primary btn-lg" role="button">Meer weten &raquo;</a></p>-->
       </div>
     </div>
@@ -104,16 +108,16 @@
       <div class="row">
         <div class="col-md-4">
           <h2>Klic</h2>
-		  <div id="klic" style="min-width: 220px; max-width: 400px; height: 350px; margin: 0 auto"></div>
+		  <div id="klic" style="min-width: 220px; max-width: 300px; height: 350px; margin: 0 auto"></div>
           <!--<p><a class="btn btn-default" href="#" role="button">details &raquo;</a></p>-->
         </div>
         <div class="col-md-4">
           <h2>bgt</h2>
-		  <div id="bgt" style="min-width: 220px; max-width: 400px; height: 350px; margin: 0 auto"></div>
+		  <div id="bgt" style="min-width: 220px; max-width: 300px; height: 350px; margin: 0 auto"></div>
        </div>
         <div class="col-md-4">
           <h2>lvwoz</h2>
-		  <div id="lvwoz" style="min-width: 220px; max-width: 400px; height: 350px; margin: 0 auto"></div>
+		  <div id="lvwoz" style="min-width: 220px; max-width: 300px; height: 350px; margin: 0 auto"></div>
         </div>
       </div>
 
