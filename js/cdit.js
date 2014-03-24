@@ -19,7 +19,7 @@ var globaloptions = {
 	},
 
 	pane: {
-		size: '85%'
+		size: '80%'
 	},
 
 	legend: {
@@ -68,7 +68,7 @@ var globaloptions = {
 };
 
 //create a nice default colourpalette
-var paletcolor = ['#fb7676','#6ef96e','#4e4ef8','#f9d961','#878787'];
+var paletcolor = ['#BCCF02', '#5BB12F', '#9B539C', '#EB65A0', '#73C5E1', '#fb7676','#6ef96e','#4e4ef8','#f9d961','#325da7', '#f68c06', '#c19e9e', '#a8c5a8'];
 
 function polarchart(parseries) {
 
@@ -96,6 +96,7 @@ function initdata(){
 	    // Split the lines
 	    var lines = data.split('\n');
     
+		var curLine = 0;
 	    // Iterate over the lines and add categories or series
 	    $.each(lines, function(lineNo, line) {
 			
@@ -104,7 +105,7 @@ function initdata(){
 			if (line == '' || line.trim().slice(0,2) == '//') return true;
         
 	        // header line containes categories
-	        if (lineNo == 0) {
+	        if (curLine == 0) {
 	            $.each(items, function(itemNo, item) {
 	                if (itemNo > 0) globaloptions.xAxis.categories.push(item.trim());
 	            });
@@ -119,7 +120,7 @@ function initdata(){
 	            $.each(items, function(itemNo, item) {
 	                if (itemNo == 0) {
 	                    series.name = item;
-						series.color = paletcolor[lineNo - 1];
+						series.color = paletcolor[curLine - 1];
 						series.fillcolor = series.color;
 	                } else {
 	                    series.data.push(parseFloat(item));
@@ -129,6 +130,8 @@ function initdata(){
 	            globalseries[series.name] = series;
     
 	        }
+			// increment real line number (ignoring comments)
+			curLine++;
         
 	    });
     

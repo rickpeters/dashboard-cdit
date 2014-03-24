@@ -1,7 +1,10 @@
-Project, Build, Test, Delivery, Pipeline, XaaS
+Project, <a href="http://wiki.cs.kadaster.nl/wiki/index.php/CDIT/Build">Build</a>, <a href="http://wiki.cs.kadaster.nl/wiki/index.php/CDIT/Test">Test</a>, <a href="http://wiki.cs.kadaster.nl/wiki/index.php/CDIT/Delivery">Delivery</a>, <a href="http://wiki.cs.kadaster.nl/wiki/index.php/CDIT/Pipeline">Pipeline</a>, <a href="http://wiki.cs.kadaster.nl/wiki/index.php/CDIT/XaaS">XaaS</a>
+// project, build, test, delivery, pipeline, xaas
 klic, 100, 74, 35, 20, 60
 bgt, 93, 87, 80, 30, 100
-lvwoz, 75, 33, 0, 0, 50
-// tata comment
-plp, 80, 90, 75, 100, 100
- // comment 2
+// lvwoz, 75, 33, 0, 0, 50
+// onderstaande zijn de kandidaten voor CDIT Wave-1
+gvf, 83, 48, 0, 0, 5
+miv, 93, 66, 40, 0, 5
+bag, 67, 46, 0, 0, 0
+pdok, 58, 13, 55, 0, 5
