@@ -98,7 +98,10 @@ function initdata(){
     
 	    // Iterate over the lines and add categories or series
 	    $.each(lines, function(lineNo, line) {
+			
 	        var items = line.split(',');
+			// skip empty, comment and wrong  lines
+			if (line == '' || line.trim().slice(0,2) == '//') return true;
         
 	        // header line containes categories
 	        if (lineNo == 0) {
