@@ -1,4 +1,4 @@
-Project, <a href="http://wiki.cs.kadaster.nl/wiki/index.php/CDIT/Build">Build</a>, <a href="http://wiki.cs.kadaster.nl/wiki/index.php/CDIT/Test">Test</a>, <a href="http://wiki.cs.kadaster.nl/wiki/index.php/CDIT/Delivery">Delivery</a>, <a href="http://wiki.cs.kadaster.nl/wiki/index.php/CDIT/Pipeline">Pipeline</a>, <a href="http://wiki.cs.kadaster.nl/wiki/index.php/CDIT/XaaS">XaaS</a>
+project, build, test, delivery, pipeline, xaaS
 // project, build, test, delivery, pipeline, xaas
 klic, 100, 74, 35, 20, 60
 bgt, 93, 87, 80, 30, 100

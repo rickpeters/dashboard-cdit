@@ -56,6 +56,12 @@ var globaloptions = {
 		valueSuffix: '%',
 		followPointer: true
 	},
+	
+	navigation: {
+	    buttonOptions: {
+	        enabled: false
+	        }
+	},
 
 	plotOptions: {
 		series: {
@@ -68,6 +74,7 @@ var globaloptions = {
 };
 
 //create a nice default colourpalette
+// {{placeholder_js}}
 var paletcolor = ['#BCCF02', '#5BB12F', '#9B539C', '#EB65A0', '#73C5E1', '#fb7676','#6ef96e','#4e4ef8','#f9d961','#325da7', '#f68c06', '#c19e9e', '#a8c5a8'];
 
 function polarchart(parseries) {
@@ -151,7 +158,7 @@ function projectchart(id, series){
 	});
 	
 	options.series = localseries;
-	options.title.text = "CDIT Maturity Scan Overview";
+	options.title.text = "";
 	options.legend.enabled = true;
 	
 	$('#' + id).highcharts(options);
