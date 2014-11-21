@@ -1,11 +1,5 @@
-project, build, test, delivery, pipeline, xaaS
-// project, build, test, delivery, pipeline, xaas
-klic, 100, 74, 35, 20, 60
-bgt, 93, 87, 80, 30, 100
-// lvwoz, 75, 33, 0, 0, 50
-// onderstaande zijn de kandidaten voor CDIT Wave-1
-gvf, 83, 48, 0, 0, 5
-miv, 93, 66, 40, 0, 5
-bag, 67, 46, 0, 0, 0
-pdok, 58, 13, 55, 0, 5
-vkg, 100, 72, 0, 0, 50
+scan,ci,ad,ta,p,a
+target, 80, 80, 60, 80, 60
+final, 70, 80, 50, 60, 50
+intermediate, 40, 60, 40, 40, 20
+inital, 20, 40, 10, 20, 10
