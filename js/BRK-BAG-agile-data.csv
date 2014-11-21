@@ -1,0 +1,5 @@
+scan,Team,SM,PO,PBL,Ready,Planning,Sprint BL,SU,Sprints,Impediments,SDM,DOD,Demo,Learning,Metrics
+target, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90
+final, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+intermediate, 80, 50, 60, 80, 80, 80, 60, 80, 70, 60, 50, 60, 70, 50, 80
+initial, 60, 40, 50, 30, 60, 20, 40, 50, 30, 10, 40, 30, 60, 20, 20

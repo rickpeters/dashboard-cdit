@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="ico/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="ico/favicon.ico" type="image/x-icon">
+
+    <title>CDIT Maturity Scan</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/csvtable.css" type="text/css" />
+
+    <!-- Custom styles for this template -->
+    <link href="jumbotron.css" rel="stylesheet">
+
+	<!--jquery lokaal gedefinieerd om proxy problemen bij kadaster te voorkomen-->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
+    <script src="js/jquery.min.js"></script>
+	<!-- include Cycle plugin -->
+<script type="text/javascript" src="js/jquery-cycle.js"></script>
+<script type="text/javascript" src="js/jquery.tablesorter.min.js"></script>
+<script type="text/javascript" src="js/jquery.csvToTable.js"></script>
+
+	<script type="text/javascript">
+		$(function () {
+			
+			<!--initdata();-->
+			//agileChart('PDOK', 'agile', globalseries);
+			//cdChart('PDOK', 'continuous-delivery', globalseries);
+			//agileChart('BRK-BAG', 'agile', globalseries);
+			//cdChart('BRK-BAG', 'continuous-delivery', globalseries);
+			
+			// Initialize a Slidr. 
+			// Display breadcrumbs, overflow transitions, use cube transition.
+			var s = slidr.create('slidr-home-demo', {
+				before: function(e) {
+				if (e.in.slidr !== 'PDOK-T'){
+					agileChart(e.in.slidr, 'agile', globalseries);
+					cdChart(e.in.slidr, 'continuous-delivery', globalseries);
+				}
+			//agileChart(e.in.slidr, 'agile', globalseries);
+			//cdChart(e.in.slidr, 'continuous-delivery', globalseries);				
+				},
+				breadcrumbs: true,
+				overflow: true
+			});
+
+			// Add horizontal slides with default linear transition.
+			// The extra "one" allows the slidr to circle back and loop infinitely.
+			s.add('h', ['PDOK', 'PDOK-T','BRK-BAG','PDOK'],'cube');
+			//test met meerdere slides.... en 1x aan einde specificeren
+			//s.add('v', ['PDOK', 'BRK-BAG','PDOK'],'cube');
+			//s.add('h', ['one', 'two', 'three','one']);
+			// Add vertical slides using a cube transition.
+			//s.add('v', ['five', 'four', 'three', 'five'], 'cube');
+
+			// Now start.
+			s.auto();
+			
+			
+			
+		
+		
+	
+	
+	
+});
+
+
+
+
+</script>
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+	<script src="js/highcharts.js" type="text/javascript">
+	</script>
+	<script src="js/highcharts-more.js" type="text/javascript">
+	</script>
+	<script src="js/modules/data.js" type="text/javascript">
+	</script>
+	<script src="js/modules/exporting.js" type="text/javascript">
+	</script>
+	<script src="js/cdit.js" type="text/javascript">
+	</script>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">CDIT</a>
+			</div>
+		</div>
+    </div>
+	
+	
+	
+	<div id="slidr-home-demo" style="visibility: visible; opacity: 1; display: block; position: relative; overflow: visible; transition: height 0.05s ease-out, width 0.05s ease-out; -webkit-transition: height 0.05s ease-out, width 0.05s ease-out; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 1000px; height: 682px; margin: 20px"> 
+	
+	<!--class="slideshow" id="slidr-home-demo"-->
+		
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+		<div data-slidr="PDOK" style="border-style: ridge; border-width: 2px; border-color: #e1e1e1; border-radius: 10px 10px 10px 10px; box-shadow: 3px 3px 3px 3px #5E5E5E;">
+		
+        <!--<div class="container">-->
+		<!--<div class="row">-->
+			<div style="padding: 10px; text-align: center;"><h2>PDOK</h2></div>
+			<div id="PDOK-agile" style="float: left; width: 400px; height: 450px; margin: 0 auto"></div>
+			<div id="PDOK-continuous-delivery" style="float: left; width: 500px; height: 450px; margin: 0 auto"></div>
+		<!--</div>-->
+        <!--<p><a class="btn btn-primary btn-lg" role="button">Meer weten &raquo;</a></p>-->
+      <!--</div><div style="float: no-float;" />-->
+			 
+		</div>
+	
+		<div data-slidr="BRK-BAG" style="border-style: ridge; border-width: 2px; border-color: #e1e1e1; border-radius: 10px 10px 10px 10px; box-shadow: 3px 3px 3px 3px #5E5E5E;">
+			<!--<div class="container">-->
+			<!--<div class="row">-->
+			<div style="padding: 10px; text-align: center;"><h2>BRK-BAG</h2></div>
+			<div id="BRK-BAG-agile" style="float: left; width: 400px; height: 450px; margin: 0 auto"></div>
+			<div id="BRK-BAG-continuous-delivery" style="float: left; width: 500px; height: 450px; margin: 0 auto"></div>
+			<!--</div>-->
+			<!--<p><a class="btn btn-primary btn-lg" role="button">Meer weten &raquo;</a></p>-->
+		  <!--</div><div style="float: no-float;" />-->
+			 
+		</div>
+		<div data-slidr="PDOK-T" style="border-style: ridge; border-width: 2px; border-color: #e1e1e1; border-radius: 10px 10px 10px 10px; box-shadow: 3px 3px 3px 3px #5E5E5E;">
+			<div style="padding-top: 10px; padding-bottom: 40px; text-align: center;"><h2>PDOK</h2></div>
+			<div id="PDOK-agile-T" style="float: left; width: 400px; height: 450px; margin: auto;"></div>
+			<script>
+				$(function() {
+				  $('#PDOK-agile-T').CSVToTable('js/PDOK-agilet-data.csv');
+				});
+			</script>
+			<div id="PDOK-cd-T" style="float: left; width: 400px; height: 450px; margin: auto;"></div>
+			<script>
+				$(function() {
+				  $('#PDOK-cd-T').CSVToTable('js/PDOK-cdt-data.csv');
+				});
+			</script>
+		</div>
+		
+		
+	</div>
+	<div style="float: no-float;" />
+	
+	
+	
+    
+
+      <footer>
+        <p>&copy; CDIT 2014</p>
+      </footer>
+	  
+	
+     <!-- </div>/container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- {{placeholder_html}} -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/bootstrap.min.js"></script>
+	<script src="js/slidr.js"></script>
+  </body>
+</html>
