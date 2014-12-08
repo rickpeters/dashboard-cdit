@@ -1,5 +1,0 @@
-scan,continuous integration,automated deployment,test automation,provisioning,architecture
-target, 80, 80, 60, 80, 60
-final, 70, 80, 50, 60, 50
-intermediate, 40, 60, 40, 40, 20
-initial, 20, 40, 10, 20, 10

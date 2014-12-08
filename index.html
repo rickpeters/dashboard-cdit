@@ -13,6 +13,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/csvtable.css" type="text/css" />
 
     <!-- Custom styles for this template -->
     <link href="jumbotron.css" rel="stylesheet">
@@ -22,52 +23,55 @@
     <script src="js/jquery.min.js"></script>
 	<!-- include Cycle plugin -->
 <script type="text/javascript" src="js/jquery-cycle.js"></script>
+<script type="text/javascript" src="js/jquery.tablesorter.min.js"></script>
+<script type="text/javascript" src="js/jquery.csvToTable.js"></script>
 
 	<script type="text/javascript">
 		$(function () {
-
+			//, globalseries
 			<!--initdata();-->
-			agileChart('PDOK', 'agile', globalseries);
-			cdChart('PDOK', 'continuous-delivery', globalseries);
-			agileChart('BRK-BAG', 'agile', globalseries);
-			cdChart('BRK-BAG', 'continuous-delivery', globalseries);
+			getTeamIds();
+			writeTableSlides();
+			writeChartSlides();
+			writeProjectSlides();
+			writeMenu();
+			setTables();
+			for (var teamInit in teamChartFiles) {
+				initdata(teamInit, 'agile');
+				initdata(teamInit, 'cd');
+			}
+			for (var teamChart in teamChartFiles) {
+				agileChart(teamChart, 'agile','agile');
+				cdChart(teamChart, 'cd','continuous-delivery');
+			}
+
 			
 			// Initialize a Slidr. 
-			// Display breadcrumbs, overflow transitions, use cube transition.
-			var s = slidr.create('slidr-home-demo', {
-				breadcrumbs: true,
-				overflow: true
-			});
-
-			// Add horizontal slides with default linear transition.
-			// The extra "one" allows the slidr to circle back and loop infinitely.
-			s.add('h', ['PDOK', 'BRK-BAG', 'PDOK'],'cube');
-			//s.add('h', ['one', 'two', 'three','one']);
-			// Add vertical slides using a cube transition.
-			//s.add('v', ['five', 'four', 'three', 'five'], 'cube');
-
-			// Now start.
+			var s = slidr.create('slidr-home-demo', { before: function(e) {}, breadcrumbs: true, overflow: true });
+			var slideObjIds = [];
+			var firstSlide = '';
+			for (var p in teamChartFiles) {
+				if (firstSlide == ''){
+					firstSlide = p;
+				}
+				slideObjIds.push(p);
+				if (p in teamTableFiles){
+					slideObjIds.push(p + '-T');
+				}
+			}
+			slideObjIds.push(firstSlide);
+			s.add('h', slideObjIds,'cube');
 			s.auto();
-			
-			
-			
-		
-		
-		
-		
-		
-});
-
-$(document).ready(function() {
-		$('.slideshow').cycle({
-			//fx: 'fade' // choose your transition type, ex: fade, scrollUp, shuffle, etc...
-			fx: 'fade',
-			easing: 'easeInBounce'
-			//sync: true
-			});
+			setTimeout(continueExecution, 1000)
 		});
+		
+		function continueExecution(){
+			swapDisplay('home');
+		}
+		
+		
+		
 	</script>
-
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
@@ -76,6 +80,9 @@ $(document).ready(function() {
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+	<style type="text/css" media="print">
+  @page { size: landscape; }
+</style>
   </head>
 
   <body>
@@ -92,93 +99,28 @@ $(document).ready(function() {
 
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container">
-			<div class="navbar-header">
+			<div id="menu-bar" class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">CDIT</a>
+				<a id="home" class="navbar-brand" href="#">Home</a>
 			</div>
 		</div>
     </div>
 	
-	<div class="slideshow"> 
-	
-	<!--class="slideshow" id="slidr-home-demo"-->
-		
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-		<div id="PDOK" >
-
-        <!--<div class="container">-->
-		<!--<div class="row">-->
-			<h3>PDOK</h3>
-			<div id="PDOK-agile" style="float: left; width: 50%; height: 600px; margin: 0 auto"></div>
-			<div id="PDOK-continuous-delivery" style="float: left; width: 50%; height: 600px; margin: 0 auto"></div>
-		<!--</div>-->
-        <!--<p><a class="btn btn-primary btn-lg" role="button">Meer weten &raquo;</a></p>-->
-      <!--</div><div style="float: no-float;" />-->
-			 
-		</div>
-	
-		<div id="BRK-BAG" >
-			<!--<div class="container">-->
-			<!--<div class="row">-->
-			<h3>BRK-BAG</h3>
-			<div id="BRK-BAG-agile" style="float: left; width: 50%; height: 600px; margin: 0 auto"></div>
-			<div id="BRK-BAG-continuous-delivery" style="float: left; width: 50%; height: 600px; margin: 0 auto"></div>
-			<!--</div>-->
-			<!--<p><a class="btn btn-primary btn-lg" role="button">Meer weten &raquo;</a></p>-->
-		  <!--</div><div style="float: no-float;" />-->
-			 
-		</div>
-		
+	<div id="contents" style="hidden: true;">
+	<div id="slidr-home-demo" style="visibility: visible; opacity: 1; display: block; position: relative; overflow: visible; transition: height 0.05s ease-out, width 0.05s ease-out; -webkit-transition: height 0.05s ease-out, width 0.05s ease-out; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 1000px; height: 682px; margin: 20px"> 
 	</div>
 	<div style="float: no-float;" />
-	
-	<div class="slidr-home-demo"> 
-	
-	<!--class="slideshow" id="slidr-home-demo"-->
-		
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-		<div data-slidr="PDOK">
-
-        <!--<div class="container">-->
-		<!--<div class="row">-->
-			<h3>PDOK</h3>
-			<div id="PDOK-agile" style="float: left; width: 50%; height: 600px; margin: 0 auto"></div>
-			<div id="PDOK-continuous-delivery" style="float: left; width: 50%; height: 600px; margin: 0 auto"></div>
-		<!--</div>-->
-        <!--<p><a class="btn btn-primary btn-lg" role="button">Meer weten &raquo;</a></p>-->
-      <!--</div><div style="float: no-float;" />-->
-			 
-		</div>
-	
-		<div data-slidr="BRK-BAG">
-			<!--<div class="container">-->
-			<!--<div class="row">-->
-			<h3>BRK-BAG</h3>
-			<div id="BRK-BAG-agile" style="float: left; width: 50%; height: 600px; margin: 0 auto"></div>
-			<div id="BRK-BAG-continuous-delivery" style="float: left; width: 50%; height: 600px; margin: 0 auto"></div>
-			<!--</div>-->
-			<!--<p><a class="btn btn-primary btn-lg" role="button">Meer weten &raquo;</a></p>-->
-		  <!--</div><div style="float: no-float;" />-->
-			 
-		</div>
-		
 	</div>
-	<div style="float: no-float;" />
-	
-	
-    
+	<div id="project-pages" style="width: 1000px;">
+	</div>
 
-      <footer>
-        <p>&copy; CDIT 2014</p>
-      </footer>
-	  
-	
-     <!-- </div>/container -->
+    	  
+	<!-- </div>/container -->
 
 
     <!-- Bootstrap core JavaScript
@@ -187,5 +129,8 @@ $(document).ready(function() {
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/bootstrap.min.js"></script>
 	<script src="js/slidr.js"></script>
+	<script>
+		
+	</script>
   </body>
 </html>
