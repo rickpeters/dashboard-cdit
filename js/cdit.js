@@ -102,7 +102,7 @@ var paletcolor = ['#BCCF02', '#5BB12F', '#9B539C', '#EB65A0', '#73C5E1', '#fb767
 
 
 function getTeamIds(){
-	$.ajax({url: "/scans/data", async: false, success: function(data){
+	$.ajax({url: "/data", async: false, success: function(data){
 			$(data).find("a:contains(.csv)").each(function(){
 				fName = $(this).attr("href")
 				if (fName.indexOf("-agile-data.csv") > -1){
@@ -205,7 +205,7 @@ function setTables(){
 function initdata(projectId, scanType){
 	var scanDataSeries = {};
 	var scanDataPresentation = $.extend(true, {}, globaloptions);
-	$.ajax({ url: '/scans/data/' + projectId + '-' + scanType + '-data.csv', async: false, dataType: 'text', success: function(data) {
+	$.ajax({ url: '/data/' + projectId + '-' + scanType + '-data.csv', async: false, dataType: 'text', success: function(data) {
 		var lines = data.split('\n');			 
 		var curLine = 0;
 		$.each(lines, function(lineNo, line) {
