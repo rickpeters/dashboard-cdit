@@ -62,7 +62,7 @@
 			slideObjIds.push(firstSlide);
 			s.add('h', slideObjIds,'cube');
 			s.auto();
-			setTimeout(continueExecution, 1000)
+			setTimeout(continueExecution, 500)
 		});
 		
 		function continueExecution(){
@@ -80,9 +80,6 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-	<style type="text/css" media="print">
-  @page { size: landscape; }
-</style>
   </head>
 
   <body>
@@ -111,14 +108,19 @@
 		</div>
     </div>
 	
+	<div id="left" style="float: left; width: *;"/>
+	<div id="center" style="float: left; width: 1000px;">
 	<div id="contents" style="hidden: true;">
-	<div id="slidr-home-demo" style="visibility: visible; opacity: 1; display: block; position: relative; overflow: visible; transition: height 0.05s ease-out, width 0.05s ease-out; -webkit-transition: height 0.05s ease-out, width 0.05s ease-out; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 1000px; height: 682px; margin: 20px"> 
+		<div id="slidr-home-demo" style="visibility: visible; opacity: 1; display: block; position: relative; overflow: visible; transition: height 0.05s ease-out, width 0.05s ease-out; -webkit-transition: height 0.05s ease-out, width 0.05s ease-out; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 1000px; height: 682px; margin: 20px"> 
+		</div>
+		<div style="float: no-float;" />
+		</div>
+		<div id="project-pages" style="width: 1000px;">
 	</div>
+	</div>
+	<div id="right" style="float: left; width: *;"/>
 	<div style="float: no-float;" />
 	</div>
-	<div id="project-pages" style="width: 1000px;">
-	</div>
-
     	  
 	<!-- </div>/container -->
 
